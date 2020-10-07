@@ -1,0 +1,32 @@
+hub:
+  cookieSecret: "99999999999999999999999999999999995b4dcbc756eb9a8943ba61df16cfa7"
+  db:
+    type: sqlite-memory
+proxy:
+  secretToken: "99999999999999999999999999999999999999933b5095cd7fedcf149195d257"
+prePuller:
+  enabled: false
+singleuser:
+  image:
+     name: montereytony/ugba147-summer2020-3
+     tag: latest
+  memory:
+     limit: 16G
+     guarantee: 1G
+  cpu:
+     limit: 2
+     guarantee: .5
+auth:
+  type: dummy
+  dummy:
+    password: 'Oh-Oh_Im_Late'
+  whitelist:
+    users:
+      - admin
+      - student1
+      - student2
+      - student3
+      - student4
+  admin:
+    users:
+      - admin
