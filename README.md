@@ -14,41 +14,45 @@ Step 2: Download the SDK and extract it. (Complete directions here: https://clou
 
 Entered the following commands: 
 
-wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-313.0.0-darwin-x86_64.tar.gz
+        wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-313.0.0-darwin-x86_64.tar.gz
 
-tar xzf google-cloud-sdk-313.0.0-darwin-x86_64.tar.gz
+        tar xzf google-cloud-sdk-313.0.0-darwin-x86_64.tar.gz
 
 Step 3: Install and Initialize software, the command is gcloud which is in the folder extracted from the SDK, issue the following commands:
 
-cd google-cloud-sdk
+        cd google-cloud-sdk
 
-./google-cloud-sdk/install.sh
+        ./google-cloud-sdk/install.sh
 
-./google-cloud-sdk/bin/gcloud init
+        ./google-cloud-sdk/bin/gcloud init
 
-At this point, the cli program will attempt to open a browser to connect to your google account.  I had lynx installed, so it was a impossible to login, once I deleted it, it opened by default browser.  At that point, you will see a screen where you can "Enable Google Kubernetes Engine API"  Click on it and you are good to go.
+At this point, the cli program will attempt to open a browser to connect to your google account.  I had lynx installed, so it was a impossible to login, once I deleted it, I reran the init and  it opened my default browser.  At this point, you will see a screen where you can "Enable Google Kubernetes Engine API"  Click on it to enable it and you are good to go.
         
-Step 4: Install kubectl:        gcloud components install kubectl
+Step 4: Install kubectl:
+        
+        gcloud components install kubectl
 
 Step 5: Create kubernetes cluster: N.B. research your zones and machine-type since costs vary deplending on your choices.
 
-gcloud container clusters create notebook-test  --num-nodes=5  --machine-type=n1-highmem-2 --zone=us-central1-b
+        gcloud container clusters create notebook-test  --num-nodes=5  --machine-type=n1-highmem-2 --zone=us-central1-b
         
-Step 6: Install Helm:           brew install kubernetes-helm
+Step 6: Install Helm:           
+        
+        brew install kubernetes-helm
 
 Step 7: Add Jupyterhub repository:
 
-helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
+        helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
 
-helm repo update
+        helm repo update
         
-Step 8: Create your YAML file
+Step 8: Create your YAML file  ( I will include a copy of mine )
 
-Step 9: Initialize your Jupyterhub
+Step 9: Initialize your Jupyterhub by first creating a name space and then using help to deploy the YAML file.
 
-kubectl  create namespace jup
+        kubectl  create namespace jup
 
-helm upgrade --install jup jupyterhub/jupyterhub --namespace jup  --version=0.8.2  --values config.yaml
+        helm upgrade --install jup jupyterhub/jupyterhub --namespace jup  --version=0.8.2  --values config.yaml
 
 Step 10: Find public IP address of the Jupyterhub instance:
 
