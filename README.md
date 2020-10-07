@@ -54,8 +54,6 @@ Step 9: Initialize your Jupyterhub by first creating a name space and then using
 
         helm upgrade --install jup jupyterhub/jupyterhub --namespace jup  --version=0.8.2  --values config.yaml
 
-Step 10: Find public IP address of the Jupyterhub instance:
+Step 10: Find public IP address of the Jupyterhub using the below command and enter that IP address in your browser and login.
 
-kube --namespace=rah get svc proxy-public
-
-Enter that IP address in your browser and login.
+        kube --namespace=rah get svc proxy-public
